@@ -1,0 +1,120 @@
+/*
+
+ */
+package exer8;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+
+/**
+l
+ */
+public class exer5 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Scanner ler = new Scanner(System.in);
+
+        ArrayList<String> listaDeCompras = new ArrayList();
+
+        int menu = 0;
+        String test;
+        String item;
+
+        do {
+            System.out.println("== Lista de Compras ==");
+            System.out.println("1- Adicionar \n"
+                    + "2- Consulta pelo índice \n"
+                    + "3- Alterar item \n"
+                    + "4- Tamanho da lista \n"
+                    + "5- Remover item \n"
+                    + "6- Classificar por ordem alfabética \n"
+                    + "7- Limpar lista \n"
+                    + "8- Sair");
+            menu = ler.nextInt();
+
+            switch (menu) {
+                case 1:
+                    test = ler.nextLine();
+                    System.out.println("== Digite o item a ser adicionado ==");
+                    item = ler.nextLine();
+                    listaDeCompras.add(item);
+                    System.out.println(item + " adicionado com sucesso !");
+                    break;
+
+                case 2:
+                    System.out.println("== Digite o índice do item ==");
+                    int index = ler.nextInt();
+
+                    if (index >= 0 && index < listaDeCompras.size()) {
+                        System.out.println("O item do indice " + index
+                                + " é: " + listaDeCompras.get(index));
+                        System.out.println("Consulta concluida !");
+                    } else {
+                        System.out.println("Esse indice ainda não existe ! \n"
+                                + "Tente novamente !");
+                    }
+                    break;
+
+                case 3:
+                    System.out.println("== Alterar item da lista ==");
+                    test = ler.nextLine();
+                    System.out.println("== Digite novo item ==");
+                    item = ler.nextLine();
+                    System.out.println("== Digite índice do item a ser substituido ! ==");
+                    index = ler.nextInt();
+                    if (index >= 0 && index < listaDeCompras.size()) {
+                        listaDeCompras.set(index, item);
+                        System.out.println("O item " + item + " substituido com sucesso !");
+                    } else {
+                        System.out.println("Esse indice ainda não existe ! \n"
+                                + "Tente novamente !");
+                    }
+                    break;
+
+                case 4:
+                    System.out.println("== Tamanha da lista ==");
+                    System.out.println("O tamanho da lista é: " + listaDeCompras.size()+ "item");
+                    System.out.println("Consulta concluida !");
+                    break;
+
+                case 5:
+                    System.out.println("== Digite o índice do item para ser Excluido ! ==");
+                    index = ler.nextInt();
+
+                    if (index >= 0 && index < listaDeCompras.size()) {
+                        listaDeCompras.remove(index);
+                        System.out.println("O item removido com sucesso !");
+                    } else {
+                        System.out.println("Esse indice ainda não existe ! \n"
+                                + "Tente novamente !");
+                    }
+                    break;
+
+                case 6:
+                    System.out.println("== Classificar por ordem alfabética ! ==");
+                    Collections.sort(listaDeCompras);
+                    break;
+
+                case 7:
+                    System.out.println("== Limpar Lista ==");
+                    listaDeCompras.clear();
+                    System.out.println("Lista limpa !");
+                    break;
+
+                case 8:
+                    System.out.println("== Sair do programa ==");
+                    break;
+
+                default:
+                    System.out.println("Opção de menu errada ! \n"
+                            + "Tente novamente !");
+            }
+
+        } while (menu != 8);
+    }
+    
+}
